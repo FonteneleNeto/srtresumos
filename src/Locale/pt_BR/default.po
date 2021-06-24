@@ -22,7 +22,7 @@ msgstr ""
 #: Controller/PracasController.php:58
 #: Controller/PracasController.php:83
 msgid "The praca could not be saved. Please, try again."
-msgstr ""
+msgstr "Não conseguimos salvar. Por favor, tente novamente."
 
 #: Controller/PracasController.php:101
 msgid "The praca has been deleted."
@@ -30,7 +30,7 @@ msgstr ""
 
 #: Controller/PracasController.php:103
 msgid "The praca could not be deleted. Please, try again."
-msgstr ""
+msgstr "Não conseguimos excluir. Por favor, tente novamente."
 
 #: Controller/ResumosController.php:27
 msgid "Prefixo não encontrado"
@@ -67,24 +67,24 @@ msgstr ""
 #: Controller/UsersController.php:61
 #: Controller/UsersController.php:87
 msgid "The user has been saved."
-msgstr ""
+msgstr "Salvamos este usuário com sucesso."
 
 #: Controller/UsersController.php:64
 #: Controller/UsersController.php:91
 msgid "The user could not be saved. Please, try again."
-msgstr ""
+msgstr "Não conseguimos salvar este usuário, por favor tente novamente"
 
 #: Controller/UsersController.php:107
 msgid "The user has been deleted."
-msgstr ""
+msgstr "Usuário deletado com sucesso"
 
 #: Controller/UsersController.php:109
 msgid "The user could not be deleted. Please, try again."
-msgstr ""
+msgstr "Não conseguimos excluir este usuário, por favor tente novamente"
 
 #: Controller/UsersController.php:124
 msgid "Usuário ou Senha inválidos, Verifique!"
-msgstr ""
+msgstr "Usuário ou Senha inválidos, Verifique!"
 
 #: Template/Layout/error.ctp:35
 #: Template/Error/error400.ctp:36
@@ -94,7 +94,7 @@ msgstr ""
 
 #: Template/Layout/error.ctp:43
 msgid "Back"
-msgstr ""
+msgstr "Voltar"
 
 #: Template/Pracas/add.ctp:9
 #: Template/Pracas/edit.ctp:9
@@ -113,7 +113,7 @@ msgstr ""
 #: Template/Users/view.ctp:9
 #: Template/Users/view.ctp:69
 msgid "Actions"
-msgstr ""
+msgstr "Ações"
 
 #: Template/Pracas/add.ctp:10
 #: Template/Pracas/edit.ctp:16
@@ -123,7 +123,7 @@ msgstr ""
 #: Template/Users/show.ctp:11
 #: Template/Users/view.ctp:14
 msgid "List Pracas"
-msgstr ""
+msgstr "Listar Praças"
 
 #: Template/Pracas/add.ctp:11
 #: Template/Pracas/edit.ctp:17
@@ -133,7 +133,7 @@ msgstr ""
 #: Template/Users/edit.ctp:16
 #: Template/Users/view.ctp:12
 msgid "List Users"
-msgstr ""
+msgstr "Listar Usuários"
 
 #: Template/Pracas/add.ctp:12
 #: Template/Pracas/edit.ctp:18
@@ -142,11 +142,11 @@ msgstr ""
 #: Template/Users/show.ctp:10
 #: Template/Users/view.ctp:13
 msgid "New User"
-msgstr ""
+msgstr "Novo Usuário"
 
 #: Template/Pracas/add.ctp:18
 msgid "Add Praca"
-msgstr ""
+msgstr "Adicionar Praça"
 
 #: Template/Pracas/add.ctp:26
 #: Template/Pracas/edit.ctp:32
@@ -156,7 +156,7 @@ msgstr ""
 #: Template/Users/edit.ctp:35
 #: View/Helper/FormHelper.php:2030
 msgid "Submit"
-msgstr ""
+msgstr "Enviar"
 
 #: Template/Pracas/edit.ctp:11
 #: Template/Pracas/index.ctp:39
@@ -180,12 +180,12 @@ msgstr ""
 #: Template/Users/view.ctp:11
 #: Template/Users/view.ctp:82
 msgid "Are you sure you want to delete # {0}?"
-msgstr ""
+msgstr "Tem certeza que deseja apagar este registro  # {0}?"
 
 #: Template/Pracas/edit.ctp:24
 #: Template/Pracas/view.ctp:10
 msgid "Edit Praca"
-msgstr ""
+msgstr "Editar Praça"
 
 #: Template/Pracas/index.ctp:10
 #: Template/Pracas/view.ctp:13
@@ -194,11 +194,11 @@ msgstr ""
 #: Template/Users/show.ctp:12
 #: Template/Users/view.ctp:15
 msgid "New Praca"
-msgstr ""
+msgstr "Nova Praça"
 
 #: Template/Pracas/index.ctp:16
 msgid "Pracas"
-msgstr ""
+msgstr "Praças"
 
 #: Template/Pracas/index.ctp:37
 #: Template/Pracas/view.ctp:74
@@ -207,7 +207,7 @@ msgstr ""
 #: Template/Users/view.ctp:80
 #: View/Helper/PaginatorHelper.php:1271
 msgid "View"
-msgstr ""
+msgstr "Visualizar"
 
 #: Template/Pracas/index.ctp:38
 #: Template/Pracas/view.ctp:75
@@ -215,7 +215,7 @@ msgstr ""
 #: Template/Users/show.ctp:42
 #: Template/Users/view.ctp:81
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: Template/Pracas/index.ctp:47
 #: Template/Resumos/index.ctp:49
@@ -249,7 +249,7 @@ msgstr "Página {{page}} de {{pages}}, mostrando {{current}} registro (s) de um 
 
 #: Template/Pracas/view.ctp:11
 msgid "Delete Praca"
-msgstr ""
+msgstr "Apagar Praça"
 
 #: Template/Pracas/view.ctp:22
 #: Template/Users/index.ctp:6
@@ -275,14 +275,14 @@ msgstr ""
 #: Template/Users/view.ctp:46
 #: Template/Users/view.ctp:67
 msgid "Created"
-msgstr ""
+msgstr "Criado em"
 
 #: Template/Pracas/view.ctp:38
 #: Template/Pracas/view.ctp:59
 #: Template/Users/view.ctp:50
 #: Template/Users/view.ctp:68
 msgid "Updated"
-msgstr ""
+msgstr "Atualizado em"
 
 #: Template/Pracas/view.ctp:42
 #: Template/Users/view.ctp:66
@@ -292,12 +292,12 @@ msgstr ""
 #: Template/Pracas/view.ctp:43
 #: Template/Users/view.ctp:55
 msgid "Yes"
-msgstr ""
+msgstr "Sim"
 
 #: Template/Pracas/view.ctp:43
 #: Template/Users/view.ctp:55
 msgid "No"
-msgstr ""
+msgstr "Não"
 
 #: Template/Pracas/view.ctp:47
 msgid "Related Users"
@@ -590,11 +590,11 @@ msgstr[1] ""
 
 #: ORM/RulesChecker.php:56
 msgid "This value is already in use"
-msgstr ""
+msgstr "Este valor já está em uso"
 
 #: ORM/RulesChecker.php:103
 msgid "This value does not exist"
-msgstr ""
+msgstr "Este valor não existe"
 
 #: ORM/RulesChecker.php:127
 msgid "The count does not match {0}{1}"
@@ -602,16 +602,16 @@ msgstr ""
 
 #: Utility/Text.php:934
 msgid "and"
-msgstr ""
+msgstr "e"
 
 #: Validation/Validator.php:2437
 #: View/Form/ArrayContext.php:226
 msgid "This field is required"
-msgstr ""
+msgstr "Este campo é obrigatório"
 
 #: Validation/Validator.php:2459
 msgid "This field cannot be left empty"
-msgstr ""
+msgstr "Este campo não poderá ficar vazio"
 
 #: Validation/Validator.php:2610
 msgid "The provided value is invalid"

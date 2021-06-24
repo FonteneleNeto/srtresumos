@@ -27,9 +27,20 @@ class UsersController extends AppController
 
     public function index()
     {
-        $user = $this->Users->get(configure::read('user_id'), [
+        $id = configure::read('user_id');
+        /*$user = $this->Users->get(configure::read('user_id'), [
             'contain' => ['Pracas']
-        ]);
+        ]);*/
+        $user = $this->Users->find('all',[
+            'conditions' => ['id' => $id],
+        ])->contain([
+            'Pracas' => function ($q) {
+                return $q
+                    ->select(['prefixo', 'nome'])
+                    ->where(['Pracas.ativa' => true])
+                    ->order(['Pracas.nome' => 'ASC']);
+            }
+        ])->first();
         $this->set(compact('user'));
     }
 
@@ -59,11 +70,12 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'show']);
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $pracas = $this->Users->Pracas->find('list', ['limit' => 200]);
+        $pracas = $this->Users->Pracas->find('list', ['keyField' => 'id',
+            'valueField' => 'nome'])->where(['ativa' => 1]);;
         $this->set(compact('user', 'pracas'));
     }
 
@@ -71,7 +83,7 @@ class UsersController extends AppController
     public function edit($id = null)
     {
         #se o valor passado por url for diferente da ID do usuário, trava o uso do metodo
-        if ($id != Configure::read('user_id')) {
+        if ($id != Configure::read('user_id') and Configure::read('user_tipo') != 'Admin') {
             throw new MethodNotAllowedException(__('Conflito de parâmetros'));
         }
         if (empty($id)) {
@@ -85,19 +97,19 @@ class UsersController extends AppController
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'show']);
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
         $pracas = $this->Users->Pracas->find('list', ['keyField' => 'id',
-            'valueField' => 'nome']);
+            'valueField' => 'nome'])->where(['ativa' => 1]);;
         $this->set(compact('user', 'pracas'));
     }
 
     public function delete($id = null)
     {
         #se o valor passado por url for diferente da ID do usuário, trava o uso do metodo
-        if ($id != Configure::read('user_id')) {
+        if ($id != Configure::read('user_id') and Configure::read('user_tipo') != 'Admin') {
             throw new MethodNotAllowedException(__('Conflito de parâmetros'));
         }
         $this->request->allowMethod(['post', 'delete']);
@@ -107,7 +119,7 @@ class UsersController extends AppController
         } else {
             $this->Flash->error(__('The user could not be deleted. Please, try again.'));
         }
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['action' => 'show']);
     }
 
     public function login()

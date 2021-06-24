@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -23,4 +24,13 @@ class Praca extends Entity
         'updated' => true,
         'users' => true,
     ];
+
+    protected function _setNome($nome)
+    {
+        return mb_strtoupper($nome);
+    }
+    protected function _setPrefixo($prefixo)
+    {
+        return mb_strtoupper($prefixo);
+    }
 }

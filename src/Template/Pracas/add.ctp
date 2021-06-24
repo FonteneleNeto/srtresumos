@@ -17,12 +17,13 @@
     <fieldset>
         <legend><?= __('Add Praca') ?></legend>
         <?php
-            echo $this->Form->control('prefixo');
-            echo $this->Form->control('nome');
+            echo $this->Form->control('prefixo',['placeholder' => 'Digite um prefixo com 3 letras']);
+            echo $this->Form->control('nome',['placeholder' => 'Digite o nome da praça']);
             echo $this->Form->control('ativa');
-            echo $this->Form->control('users._ids', ['options' => $users]);
+            echo $this->Form->control('users._ids', ['options' => $users,'class' => 'form-control select2']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
 </div>
+<?php $this->Html->script('/js/selectOptions', ['block' => 'scriptBottom']); ?>

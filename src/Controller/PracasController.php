@@ -20,7 +20,6 @@ class PracasController extends AppController
     public function index()
     {
         $pracas = $this->paginate($this->Pracas);
-
         $this->set(compact('pracas'));
     }
 
@@ -57,7 +56,7 @@ class PracasController extends AppController
             }
             $this->Flash->error(__('The praca could not be saved. Please, try again.'));
         }
-        $users = $this->Pracas->Users->find('list', ['limit' => 200]);
+        $users = $this->Pracas->Users->find('list')->where(['ativo' => 1]);
         $this->set(compact('praca', 'users'));
     }
 
@@ -82,7 +81,7 @@ class PracasController extends AppController
             }
             $this->Flash->error(__('The praca could not be saved. Please, try again.'));
         }
-        $users = $this->Pracas->Users->find('list', ['limit' => 200]);
+        $users = $this->Pracas->Users->find('list')->where(['ativo' => 1]);;
         $this->set(compact('praca', 'users'));
     }
 

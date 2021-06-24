@@ -2,17 +2,20 @@
 
 use Cake\Core\Configure;
 use Cake\Core\Configure\Engine\PhpConfig;
+use Cake\I18n\Time;
+use Cake\I18n\Date;
 
 ?>
 <!DOCTYPE html>
 <html lang="pt_br">
 <head>
+    <meta http-equiv="pragma" content="no-cache" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?= $this->fetch('title') ?></title>
+    <title><?php echo isset($title) ? $title : $this->fetch('title') ?></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <?= $this->Html->css(['bootstrap.min.css', 'AdminLTE.min.css']); ?>
+    <?= $this->Html->css(['bootstrap.min.css','select2.min.css', 'AdminLTE.min.css','datepicker3.css']); ?>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -69,7 +72,7 @@ desired effect
         <!-- Header Navbar -->
         <nav class="navbar navbar-static-top" role="navigation">
             <!-- Sidebar toggle button-->
-            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                 <span class="sr-only">Toggle navigation</span>
             </a>
             <!-- Navbar Right Menu -->
@@ -79,13 +82,24 @@ desired effect
                     <li class="dropdown user user-menu">
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="hidden-xs">
+                                <?php
+                                $date = new Date();
+                                echo $date->i18nFormat([\IntlDateFormatter::FULL, \IntlDateFormatter::SHORT]);
+                                ?>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="dropdown user user-menu">
+                        <!-- Menu Toggle Button -->
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <span class="hidden-xs"><?= $name ?></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
                             <li class="user-header">
                                 <p>
-                                    <?= $name ?>
+                                    Bem vindo, <?= $name ?>
                                     <small><?= $tipo ?></small>
                                 </p>
                             </li>
@@ -100,6 +114,13 @@ desired effect
                             </li>
                         </ul>
                     </li>
+                    <li class="dropdown tasks-menu">
+                    <li><?= $this->Html->link($this->Html->tag('i', '',
+                            ['class' => 'fa fa-sign-out']),
+                            ['controller' => 'Users', 'action' => 'logout'],
+                            ['title' => "Sair", 'escape' => false]) ?>
+                    </li>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -110,22 +131,27 @@ desired effect
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
 
-            <!-- Sidebar user panel (optional) -->
-            <div class="user-panel bg-gray-active">
-                    <p><i class="fa fa-user"></i> Bem vindo, <?= $name ?></p>
-            </div>
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MENU PRINCIPAL</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li><?= $this->Html->link($this->Html->tag('i', '',
-                            ['class' => 'fa fa-line-chart']) . " Resumos",
-                        ['controller' => 'Users', 'action' => 'index'],
-                        ['title' => "Resumos", 'escape' => false]) ?>
+
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-cubes"></i> <span>Resumos</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><?= $this->Html->link($this->Html->tag('i', '',
+                                    ['class' => 'fa fa-circle-o']) . " Listar",
+                                ['controller' => 'Users', 'action' => 'index'],
+                                ['title' => "Resumos", 'escape' => false]) ?>
+                        </li>
+
+                    </ul>
                 </li>
                 <?php if ($tipo == 'Admin'): ?>
                     <li class="treeview">
-                        <a href="#"><i class="fa fa-cubes"></i> <span>Praça</span>
+                        <a href="#"><i class="fa fa-cubes"></i> <span>Praças</span>
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
@@ -143,7 +169,7 @@ desired effect
                     </li>
                     <!-- menu de usuários-->
                     <li class="treeview">
-                        <a href="#"><i class="fa fa-user"></i> <span>Usuário</span>
+                        <a href="#"><i class="fa fa-user"></i> <span>Usuários</span>
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
@@ -179,18 +205,19 @@ desired effect
 
         <!-- Main content -->
         <section class="content container-fluid">
-            <?= $this->Flash->render() ?>
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= $this->request->controller; ?></h3>
+                    <?= $this->Flash->render() ?>
+                    <h3 class="box-title"><?= $this->request->getParam('controller'); ?></h3>
                 </div>
+                <!--------------------------
+                | Your Page Content Here |
+                -------------------------->
                 <div class="box-body">
                     <?= $this->fetch('content') ?>
                 </div><!-- /.box-body -->
             </div>
-            <!--------------------------
-              | Your Page Content Here |
-              -------------------------->
+
 
         </section>
         <!-- /.content -->
@@ -201,102 +228,32 @@ desired effect
     <footer class="main-footer">
         <!-- To the right -->
         <div class="pull-right hidden-xs">
-            Anything you want
+            SRT Resumos
         </div>
         <!-- Default to the left -->
-        <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; <?= date('Y')?> <a href="#">Nawi Informática</a>.</strong> All rights reserved.
     </footer>
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Create the tabs -->
-        <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-            <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a>
-            </li>
-            <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-        </ul>
-        <!-- Tab panes -->
-        <div class="tab-content">
-            <!-- Home tab content -->
-            <div class="tab-pane active" id="control-sidebar-home-tab">
-                <h3 class="control-sidebar-heading">Recent Activity</h3>
-                <ul class="control-sidebar-menu">
-                    <li>
-                        <a href="javascript:;">
-                            <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-                            <div class="menu-info">
-                                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                                <p>Will be 23 on April 24th</p>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-                <!-- /.control-sidebar-menu -->
-
-                <h3 class="control-sidebar-heading">Tasks Progress</h3>
-                <ul class="control-sidebar-menu">
-                    <li>
-                        <a href="javascript:;">
-                            <h4 class="control-sidebar-subheading">
-                                Custom Template Design
-                                <span class="pull-right-container">
-                    <span class="label label-danger pull-right">70%</span>
-                  </span>
-                            </h4>
-
-                            <div class="progress progress-xxs">
-                                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-                <!-- /.control-sidebar-menu -->
-
-            </div>
-            <!-- /.tab-pane -->
-            <!-- Stats tab content -->
-            <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-            <!-- /.tab-pane -->
-            <!-- Settings tab content -->
-            <div class="tab-pane" id="control-sidebar-settings-tab">
-                <form method="post">
-                    <h3 class="control-sidebar-heading">General Settings</h3>
-
-                    <div class="form-group">
-                        <label class="control-sidebar-subheading">
-                            Report panel usage
-                            <input type="checkbox" class="pull-right" checked>
-                        </label>
-
-                        <p>
-                            Some information about this general settings option
-                        </p>
-                    </div>
-                    <!-- /.form-group -->
-                </form>
-            </div>
-            <!-- /.tab-pane -->
-        </div>
-    </aside>
-    <!-- /.control-sidebar -->
-    <!-- Add the sidebar's background. This div must be placed
-    immediately after the control sidebar -->
-    <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 3 -->
-<?= $this->Html->script('plugins/jquery/jQuery-2.1.4.min.js') ?>
 <!-- Bootstrap 3.3.7 -->
 <!-- AdminLTE App -->
-<?= $this->Html->script(['bootstrap.min.js', 'app.min.js']); ?>
+<?= $this->Html->script(['jQuery.min.js', 'bootstrap.min.js', 'app.min.js','bootstrap-datepicker.js','bootstrap-datepicker.pt-BR.js','select2.min.js']); ?>
+<script>
+    $(document).ready(function() {
+        $('.data-etapa').datepicker({
+            format: "yyyymmdd",
+            language: "pt-BR"
+        });
+    });
 
+</script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
+<?= $this->fetch('scriptBottom')?>
 </body>
 </html>

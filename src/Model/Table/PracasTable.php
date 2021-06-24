@@ -62,7 +62,7 @@ class PracasTable extends Table
     }
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['prefixo']));
+        $rules->add($rules->isUnique(['prefixo'],'Este Prefixo já está em uso'));
         return $rules;
     }
 }

@@ -34,7 +34,12 @@
                 <td><?= h($user->name) ?></td>
                 <td><?= h($user->username) ?></td>
                 <td><?= h($user->email) ?></td>
-                <td><?= h($user->ativo) ?></td>
+                <td>
+                    <?php
+                    $type = ($user->ativo == true) ? 'success' : 'danger';
+                    echo $this->ViewService->label($type, $this->ViewService->active($user->ativo))
+                    ?>
+                </td>
                 <td><?= h($user->role) ?></td>
                 <td><?= h($user->created) ?></td>
                 <td class="actions">

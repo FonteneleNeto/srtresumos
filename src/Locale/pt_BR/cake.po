@@ -21,15 +21,15 @@ msgstr ""
 
 #: Template/Error/error400.ctp:37
 msgid "The requested address {0} was not found on this server."
-msgstr ""
+msgstr "o endereço solicitado {0} não foi encontrado neste servidor."
 
 #: Template/Error/error500.ctp:39
 msgid "An Internal Error Has Occurred"
-msgstr ""
+msgstr "Ocorreu um erro interno"
 
 #: Controller/Component/AuthComponent.php:502
 msgid "You are not authorized to access that location."
-msgstr ""
+msgstr "Você não está autorizado a acessar esse local, por favor faça login"
 
 #: Controller/Component/CsrfComponent.php:181
 #: Http/Middleware/CsrfProtectionMiddleware.php:228
@@ -247,7 +247,7 @@ msgstr ""
 #: Validation/Validator.php:2437
 #: View/Form/ArrayContext.php:226
 msgid "This field is required"
-msgstr ""
+msgstr "Este campo é obrigatório"
 
 #: Validation/Validator.php:2459
 msgid "This field cannot be left empty"

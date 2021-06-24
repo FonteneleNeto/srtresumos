@@ -83,8 +83,7 @@ class UsersTable extends Table
             ->allowEmptyString('ativo');
 
         $validator
-            ->scalar('role')
-            ->allowEmptyString('role');
+            ->scalar('role');
 
         return $validator;
     }
@@ -102,5 +101,13 @@ class UsersTable extends Table
         $rules->add($rules->isUnique(['email']));
 
         return $rules;
+    }
+    public function findAuth($query, array $options)
+    {
+        $query
+            ->select(['id', 'username','name','role', 'password'])
+            ->where(['Users.ativo' => 1]);
+
+        return $query;
     }
 }

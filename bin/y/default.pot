@@ -1,0 +1,679 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2021-06-08 11:08-0300\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/PracasController.php:54
+#: Controller/PracasController.php:79
+msgid "The praca has been saved."
+msgstr ""
+
+#: Controller/PracasController.php:58
+#: Controller/PracasController.php:83
+msgid "The praca could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/PracasController.php:101
+msgid "The praca has been deleted."
+msgstr ""
+
+#: Controller/PracasController.php:103
+msgid "The praca could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/ResumosController.php:27
+msgid "Prefixo não encontrado"
+msgstr ""
+
+#: Controller/ResumosController.php:40
+msgid "Praça não encontrada"
+msgstr ""
+
+#: Controller/UltimaEdicaoPracaController.php:54
+#: Controller/UltimaEdicaoPracaController.php:78
+msgid "The ultima edicao praca has been saved."
+msgstr ""
+
+#: Controller/UltimaEdicaoPracaController.php:58
+#: Controller/UltimaEdicaoPracaController.php:82
+msgid "The ultima edicao praca could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/UltimaEdicaoPracaController.php:99
+msgid "The ultima edicao praca has been deleted."
+msgstr ""
+
+#: Controller/UltimaEdicaoPracaController.php:101
+msgid "The ultima edicao praca could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/UsersController.php:40
+#: Controller/UsersController.php:76
+#: Controller/UsersController.php:102
+msgid "Conflito de parâmetros"
+msgstr ""
+
+#: Controller/UsersController.php:61
+#: Controller/UsersController.php:87
+msgid "The user has been saved."
+msgstr ""
+
+#: Controller/UsersController.php:64
+#: Controller/UsersController.php:91
+msgid "The user could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/UsersController.php:107
+msgid "The user has been deleted."
+msgstr ""
+
+#: Controller/UsersController.php:109
+msgid "The user could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/UsersController.php:124
+msgid "Usuário ou Senha inválidos, Verifique!"
+msgstr ""
+
+#: Template/Layout/error.ctp:35
+#: Template/Error/error400.ctp:36
+#: Template/Error/error500.ctp:41
+msgid "Error"
+msgstr ""
+
+#: Template/Layout/error.ctp:43
+msgid "Back"
+msgstr ""
+
+#: Template/Pracas/add.ctp:9
+#: Template/Pracas/edit.ctp:9
+#: Template/Pracas/index.ctp:9
+#: Template/Pracas/index.ctp:25
+#: Template/Pracas/view.ctp:9
+#: Template/Pracas/view.ctp:60
+#: Template/Resumos/add.ctp:9
+#: Template/Resumos/edit.ctp:9
+#: Template/Resumos/index.ctp:9
+#: Template/Resumos/index.ctp:25
+#: Template/Users/add.ctp:9
+#: Template/Users/edit.ctp:9
+#: Template/Users/show.ctp:9
+#: Template/Users/show.ctp:27
+#: Template/Users/view.ctp:9
+#: Template/Users/view.ctp:69
+msgid "Actions"
+msgstr ""
+
+#: Template/Pracas/add.ctp:10
+#: Template/Pracas/edit.ctp:16
+#: Template/Pracas/view.ctp:12
+#: Template/Users/add.ctp:11
+#: Template/Users/edit.ctp:17
+#: Template/Users/show.ctp:11
+#: Template/Users/view.ctp:14
+msgid "List Pracas"
+msgstr ""
+
+#: Template/Pracas/add.ctp:11
+#: Template/Pracas/edit.ctp:17
+#: Template/Pracas/index.ctp:11
+#: Template/Pracas/view.ctp:14
+#: Template/Users/add.ctp:10
+#: Template/Users/edit.ctp:16
+#: Template/Users/view.ctp:12
+msgid "List Users"
+msgstr ""
+
+#: Template/Pracas/add.ctp:12
+#: Template/Pracas/edit.ctp:18
+#: Template/Pracas/index.ctp:12
+#: Template/Pracas/view.ctp:15
+#: Template/Users/show.ctp:10
+#: Template/Users/view.ctp:13
+msgid "New User"
+msgstr ""
+
+#: Template/Pracas/add.ctp:18
+msgid "Add Praca"
+msgstr ""
+
+#: Template/Pracas/add.ctp:26
+#: Template/Pracas/edit.ctp:32
+#: Template/Resumos/add.ctp:29
+#: Template/Resumos/edit.ctp:35
+#: Template/Users/add.ctp:29
+#: Template/Users/edit.ctp:35
+#: View/Helper/FormHelper.php:2030
+msgid "Submit"
+msgstr ""
+
+#: Template/Pracas/edit.ctp:11
+#: Template/Pracas/index.ctp:39
+#: Template/Pracas/view.ctp:76
+#: Template/Resumos/edit.ctp:11
+#: Template/Resumos/index.ctp:41
+#: Template/Users/edit.ctp:11
+#: Template/Users/show.ctp:43
+#: Template/Users/view.ctp:82
+msgid "Delete"
+msgstr ""
+
+#: Template/Pracas/edit.ctp:13
+#: Template/Pracas/index.ctp:39
+#: Template/Pracas/view.ctp:11
+#: Template/Pracas/view.ctp:76
+#: Template/Resumos/edit.ctp:13
+#: Template/Resumos/index.ctp:41
+#: Template/Users/edit.ctp:13
+#: Template/Users/show.ctp:43
+#: Template/Users/view.ctp:11
+#: Template/Users/view.ctp:82
+msgid "Are you sure you want to delete # {0}?"
+msgstr ""
+
+#: Template/Pracas/edit.ctp:24
+#: Template/Pracas/view.ctp:10
+msgid "Edit Praca"
+msgstr ""
+
+#: Template/Pracas/index.ctp:10
+#: Template/Pracas/view.ctp:13
+#: Template/Users/add.ctp:12
+#: Template/Users/edit.ctp:18
+#: Template/Users/show.ctp:12
+#: Template/Users/view.ctp:15
+msgid "New Praca"
+msgstr ""
+
+#: Template/Pracas/index.ctp:16
+msgid "Pracas"
+msgstr ""
+
+#: Template/Pracas/index.ctp:37
+#: Template/Pracas/view.ctp:74
+#: Template/Resumos/index.ctp:39
+#: Template/Users/show.ctp:41
+#: Template/Users/view.ctp:80
+#: View/Helper/PaginatorHelper.php:1271
+msgid "View"
+msgstr ""
+
+#: Template/Pracas/index.ctp:38
+#: Template/Pracas/view.ctp:75
+#: Template/Resumos/index.ctp:40
+#: Template/Users/show.ctp:42
+#: Template/Users/view.ctp:81
+msgid "Edit"
+msgstr ""
+
+#: Template/Pracas/index.ctp:47
+#: Template/Resumos/index.ctp:49
+#: Template/Users/show.ctp:51
+msgid "first"
+msgstr ""
+
+#: Template/Pracas/index.ctp:48
+#: Template/Resumos/index.ctp:50
+#: Template/Users/show.ctp:52
+msgid "previous"
+msgstr ""
+
+#: Template/Pracas/index.ctp:50
+#: Template/Resumos/index.ctp:52
+#: Template/Users/show.ctp:54
+msgid "next"
+msgstr ""
+
+#: Template/Pracas/index.ctp:51
+#: Template/Resumos/index.ctp:53
+#: Template/Users/show.ctp:55
+msgid "last"
+msgstr ""
+
+#: Template/Pracas/index.ctp:53
+#: Template/Resumos/index.ctp:55
+#: Template/Users/show.ctp:57
+msgid "Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total"
+msgstr ""
+
+#: Template/Pracas/view.ctp:11
+msgid "Delete Praca"
+msgstr ""
+
+#: Template/Pracas/view.ctp:22
+#: Template/Users/index.ctp:6
+#: Template/Users/view.ctp:64
+msgid "Prefixo"
+msgstr ""
+
+#: Template/Pracas/view.ctp:26
+#: Template/Users/index.ctp:7
+#: Template/Users/view.ctp:65
+msgid "Nome"
+msgstr ""
+
+#: Template/Pracas/view.ctp:30
+#: Template/Pracas/view.ctp:51
+#: Template/Users/view.ctp:42
+#: Template/Users/view.ctp:63
+msgid "Id"
+msgstr ""
+
+#: Template/Pracas/view.ctp:34
+#: Template/Pracas/view.ctp:58
+#: Template/Users/view.ctp:46
+#: Template/Users/view.ctp:67
+msgid "Created"
+msgstr ""
+
+#: Template/Pracas/view.ctp:38
+#: Template/Pracas/view.ctp:59
+#: Template/Users/view.ctp:50
+#: Template/Users/view.ctp:68
+msgid "Updated"
+msgstr ""
+
+#: Template/Pracas/view.ctp:42
+#: Template/Users/view.ctp:66
+msgid "Ativa"
+msgstr ""
+
+#: Template/Pracas/view.ctp:43
+#: Template/Users/view.ctp:55
+msgid "Yes"
+msgstr ""
+
+#: Template/Pracas/view.ctp:43
+#: Template/Users/view.ctp:55
+msgid "No"
+msgstr ""
+
+#: Template/Pracas/view.ctp:47
+msgid "Related Users"
+msgstr ""
+
+#: Template/Pracas/view.ctp:52
+#: Template/Users/view.ctp:22
+msgid "Name"
+msgstr ""
+
+#: Template/Pracas/view.ctp:53
+#: Template/Users/view.ctp:26
+msgid "Username"
+msgstr ""
+
+#: Template/Pracas/view.ctp:54
+#: Template/Users/view.ctp:30
+msgid "Password"
+msgstr ""
+
+#: Template/Pracas/view.ctp:55
+#: Template/Users/view.ctp:34
+msgid "Email"
+msgstr ""
+
+#: Template/Pracas/view.ctp:56
+#: Template/Users/view.ctp:54
+msgid "Ativo"
+msgstr ""
+
+#: Template/Pracas/view.ctp:57
+#: Template/Users/view.ctp:38
+msgid "Role"
+msgstr ""
+
+#: Template/Resumos/add.ctp:10
+#: Template/Resumos/edit.ctp:16
+msgid "List Resumos"
+msgstr ""
+
+#: Template/Resumos/add.ctp:16
+msgid "Add Resumo"
+msgstr ""
+
+#: Template/Resumos/edit.ctp:22
+msgid "Edit Resumo"
+msgstr ""
+
+#: Template/Resumos/index.ctp:10
+msgid "New Resumo"
+msgstr ""
+
+#: Template/Resumos/index.ctp:14
+msgid "Resumos"
+msgstr ""
+
+#: Template/Users/add.ctp:18
+msgid "Add User"
+msgstr ""
+
+#: Template/Users/edit.ctp:24
+#: Template/Users/view.ctp:10
+msgid "Edit User"
+msgstr ""
+
+#: Template/Users/index.ctp:2
+msgid "Praças"
+msgstr ""
+
+#: Template/Users/show.ctp:16
+msgid "Users"
+msgstr ""
+
+#: Template/Users/view.ctp:11
+msgid "Delete User"
+msgstr ""
+
+#: Template/Users/view.ctp:59
+msgid "Related Pracas"
+msgstr ""
+
+#: Template/Error/error400.ctp:37
+msgid "The requested address {0} was not found on this server."
+msgstr ""
+
+#: Template/Error/error500.ctp:39
+msgid "An Internal Error Has Occurred"
+msgstr ""
+
+#: Controller/Component/AuthComponent.php:502
+msgid "You are not authorized to access that location."
+msgstr ""
+
+#: Controller/Component/CsrfComponent.php:181
+#: Http/Middleware/CsrfProtectionMiddleware.php:228
+msgid "Missing CSRF token cookie"
+msgstr ""
+
+#: Controller/Component/CsrfComponent.php:185
+#: Http/Middleware/CsrfProtectionMiddleware.php:232
+msgid "CSRF token mismatch."
+msgstr ""
+
+#: Error/ExceptionRenderer.php:301
+msgid "Not Found"
+msgstr ""
+
+#: Error/ExceptionRenderer.php:303
+msgid "An Internal Error Has Occurred."
+msgstr ""
+
+#: Http/Response.php:2679
+msgid "The requested file contains `..` and will not be read."
+msgstr ""
+
+#: Http/Response.php:2700
+msgid "The requested file was not found"
+msgstr ""
+
+#: I18n/Number.php:89
+msgid "{0,number,#,###.##} KB"
+msgstr ""
+
+#: I18n/Number.php:91
+msgid "{0,number,#,###.##} MB"
+msgstr ""
+
+#: I18n/Number.php:93
+msgid "{0,number,#,###.##} GB"
+msgstr ""
+
+#: I18n/Number.php:95
+msgid "{0,number,#,###.##} TB"
+msgstr ""
+
+#: I18n/Number.php:87
+msgid "{0,number,integer} Byte"
+msgid_plural "{0,number,integer} Bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: I18n/RelativeTimeFormatter.php:80
+msgid "{0} from now"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:80
+msgid "{0} ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:83
+msgid "{0} after"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:83
+msgid "{0} before"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:114
+msgid "just now"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:151
+msgid "about a second ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:152
+msgid "about a minute ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:153
+msgid "about an hour ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:154
+#: I18n/RelativeTimeFormatter.php:332
+msgid "about a day ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:155
+#: I18n/RelativeTimeFormatter.php:333
+msgid "about a week ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:156
+#: I18n/RelativeTimeFormatter.php:334
+msgid "about a month ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:157
+#: I18n/RelativeTimeFormatter.php:335
+msgid "about a year ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:168
+msgid "in about a second"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:169
+msgid "in about a minute"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:170
+msgid "in about an hour"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:171
+#: I18n/RelativeTimeFormatter.php:346
+msgid "in about a day"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:172
+#: I18n/RelativeTimeFormatter.php:347
+msgid "in about a week"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:173
+#: I18n/RelativeTimeFormatter.php:348
+msgid "in about a month"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:174
+#: I18n/RelativeTimeFormatter.php:349
+msgid "in about a year"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:304
+msgid "today"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:370
+msgid "%s ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:371
+msgid "on %s"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:47
+#: I18n/RelativeTimeFormatter.php:126
+#: I18n/RelativeTimeFormatter.php:316
+msgid "{0} year"
+msgid_plural "{0} years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: I18n/RelativeTimeFormatter.php:51
+#: I18n/RelativeTimeFormatter.php:129
+#: I18n/RelativeTimeFormatter.php:319
+msgid "{0} month"
+msgid_plural "{0} months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: I18n/RelativeTimeFormatter.php:57
+#: I18n/RelativeTimeFormatter.php:132
+#: I18n/RelativeTimeFormatter.php:322
+msgid "{0} week"
+msgid_plural "{0} weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: I18n/RelativeTimeFormatter.php:59
+#: I18n/RelativeTimeFormatter.php:135
+#: I18n/RelativeTimeFormatter.php:325
+msgid "{0} day"
+msgid_plural "{0} days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: I18n/RelativeTimeFormatter.php:64
+#: I18n/RelativeTimeFormatter.php:138
+msgid "{0} hour"
+msgid_plural "{0} hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: I18n/RelativeTimeFormatter.php:68
+#: I18n/RelativeTimeFormatter.php:141
+msgid "{0} minute"
+msgid_plural "{0} minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: I18n/RelativeTimeFormatter.php:72
+#: I18n/RelativeTimeFormatter.php:144
+msgid "{0} second"
+msgid_plural "{0} seconds"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ORM/RulesChecker.php:56
+msgid "This value is already in use"
+msgstr ""
+
+#: ORM/RulesChecker.php:103
+msgid "This value does not exist"
+msgstr ""
+
+#: ORM/RulesChecker.php:127
+msgid "The count does not match {0}{1}"
+msgstr ""
+
+#: Utility/Text.php:934
+msgid "and"
+msgstr ""
+
+#: Validation/Validator.php:2437
+#: View/Form/ArrayContext.php:226
+msgid "This field is required"
+msgstr ""
+
+#: Validation/Validator.php:2459
+msgid "This field cannot be left empty"
+msgstr ""
+
+#: Validation/Validator.php:2610
+msgid "The provided value is invalid"
+msgstr ""
+
+#: View/Helper/FormHelper.php:1108
+msgid "Edit {0}"
+msgstr ""
+
+#: View/Helper/FormHelper.php:1110
+msgid "New {0}"
+msgstr ""
+
+#: View/Helper/HtmlHelper.php:818
+msgid "Home"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:539
+msgid "January"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:540
+msgid "February"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:541
+msgid "March"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:542
+msgid "April"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:543
+msgid "May"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:544
+msgid "June"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:545
+msgid "July"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:546
+msgid "August"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:547
+msgid "September"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:548
+msgid "October"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:549
+msgid "November"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:550
+msgid "December"
+msgstr ""
+

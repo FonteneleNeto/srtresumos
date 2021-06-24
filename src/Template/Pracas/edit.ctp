@@ -26,9 +26,10 @@
             echo $this->Form->control('prefixo');
             echo $this->Form->control('nome');
             echo $this->Form->control('ativa');
-            echo $this->Form->control('users._ids', ['options' => $users]);
+            echo $this->Form->control('users._ids', ['options' => $users,'class' => 'form-control select2']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
 </div>
+<?php $this->Html->script('/js/selectOptions', ['block' => 'scriptBottom']); ?>

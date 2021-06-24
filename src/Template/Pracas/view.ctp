@@ -11,13 +11,15 @@
         <li><?= $this->Form->postLink(__('Delete Praca'), ['action' => 'delete', $praca->id], ['confirm' => __('Are you sure you want to delete # {0}?', $praca->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Pracas'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Praca'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'show']) ?> </li>
         <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
-<div class="pracas view large-9 medium-8 columns content">
-    <h3><?= h($praca->id) ?></h3>
-    <table class="vertical-table">
+<div class="pracas view">
+    <h3><?= h($praca->prefixo) ?></h3>
+    <div class="row">
+        <div class="col-xs-5">
+            <table class="table table-bordered">
         <tr>
             <th scope="row"><?= __('Prefixo') ?></th>
             <td><?= h($praca->prefixo) ?></td>
@@ -43,20 +45,19 @@
             <td><?= $praca->ativa ? __('Yes') : __('No'); ?></td>
         </tr>
     </table>
+        </div>
+    </div>
     <div class="related">
         <h4><?= __('Related Users') ?></h4>
         <?php if (!empty($praca->users)): ?>
-        <table cellpadding="0" cellspacing="0">
+        <table class="table table-condensed">
             <tr>
                 <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Name') ?></th>
                 <th scope="col"><?= __('Username') ?></th>
-                <th scope="col"><?= __('Password') ?></th>
                 <th scope="col"><?= __('Email') ?></th>
-                <th scope="col"><?= __('Ativo') ?></th>
                 <th scope="col"><?= __('Role') ?></th>
-                <th scope="col"><?= __('Created') ?></th>
-                <th scope="col"><?= __('Updated') ?></th>
+                <th scope="col"><?= __('created') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($praca->users as $users): ?>
@@ -64,12 +65,9 @@
                 <td><?= h($users->id) ?></td>
                 <td><?= h($users->name) ?></td>
                 <td><?= h($users->username) ?></td>
-                <td><?= h($users->password) ?></td>
                 <td><?= h($users->email) ?></td>
-                <td><?= h($users->ativo) ?></td>
                 <td><?= h($users->role) ?></td>
                 <td><?= h($users->created) ?></td>
-                <td><?= h($users->updated) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Users', 'action' => 'view', $users->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Users', 'action' => 'edit', $users->id]) ?>

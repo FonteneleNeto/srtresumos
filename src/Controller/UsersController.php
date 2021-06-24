@@ -27,6 +27,7 @@ class UsersController extends AppController
 
     public function index()
     {
+        $title = "Praças";
         $id = configure::read('user_id');
         /*$user = $this->Users->get(configure::read('user_id'), [
             'contain' => ['Pracas']
@@ -41,7 +42,7 @@ class UsersController extends AppController
                     ->order(['Pracas.nome' => 'ASC']);
             }
         ])->first();
-        $this->set(compact('user'));
+        $this->set(compact(['user','title']));
     }
 
     public function show()

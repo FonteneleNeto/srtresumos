@@ -10,6 +10,7 @@ use Cake\Event\EventInterface;
 use Cake\Http\Exception\NotFoundException;
 use Cake\Http\Exception\MethodNotAllowedException;
 
+
 class UsersController extends AppController
 {
 
@@ -28,10 +29,14 @@ class UsersController extends AppController
     public function index()
     {
         $title = "Praças";
+
+        $datas =
+
+
+
+
         $id = configure::read('user_id');
-        /*$user = $this->Users->get(configure::read('user_id'), [
-            'contain' => ['Pracas']
-        ]);*/
+
         $user = $this->Users->find('all',[
             'conditions' => ['id' => $id],
         ])->contain([
@@ -42,7 +47,16 @@ class UsersController extends AppController
                     ->order(['Pracas.nome' => 'ASC']);
             }
         ])->first();
-        $this->set(compact(['user','title']));
+        $pracas = [];
+        foreach ($user->pracas as $prefixos){
+            $pracas[] .= $prefixos->prefixo;
+        }
+        $resumos = $this->Resumos->find('all')
+            ->select(['PRACA','DATAETAPA'])
+            ->where(['PRACA IN' => $pracas])
+            ->group('DATAETAPA')
+            ->order(['PRACA' => 'ASC' ,'DATAETAPA' => 'DESC']);
+        $this->set(compact(['user','title','resumos']));
     }
 
     public function show()

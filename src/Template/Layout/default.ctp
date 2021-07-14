@@ -137,13 +137,13 @@ desired effect
                 <!-- Optionally, you can add icons to the links -->
 
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-cubes"></i> <span>Resumos</span>
+                    <a href="#"><i class="fa fa-bar-chart"></i> <span>Resumos</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
                         <li><?= $this->Html->link($this->Html->tag('i', '',
                                     ['class' => 'fa fa-circle-o']) . " Listar",
-                                ['controller' => 'Users', 'action' => 'index'],
+                                ['controller' => 'Resumos', 'action' => 'index'],
                                 ['title' => "Resumos", 'escape' => false]) ?>
                         </li>
 
@@ -217,8 +217,6 @@ desired effect
                     <?= $this->fetch('content') ?>
                 </div><!-- /.box-body -->
             </div>
-
-
         </section>
         <!-- /.content -->
     </div>

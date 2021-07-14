@@ -1,57 +1,39 @@
 <?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Resumo[]|\Cake\Collection\CollectionInterface $resumos
- */
+//debug($query->pracas);
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Resumo'), ['action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="resumos index large-9 medium-8 columns content">
-    <h3><?= __('Resumos') ?></h3>
-    <table class="table table-condensed">
-        <thead>
+<?php if (!empty($query->pracas)): ?>
+    <div class="table-responsive">
+        <table class="table table-striped">
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('PRACA') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('DISTRIBUIDOR') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('DATAETAPA') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('NOMEDIS') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('NUMDIS') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('CHAVE') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('DataHora') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col"><?= __('Buscar') ?></th>
+                <th scope="col"><?= __('Nome') ?></th>
             </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($resumos as $resumo): ?>
-            <tr>
-                <td><?= h($resumo->PRACA) ?></td>
-                <td><?= h($resumo->DISTRIBUIDOR) ?></td>
-                <td><?= h($resumo->DATAETAPA) ?></td>
-                <td><?= h($resumo->NOMEDIS) ?></td>
-                <td><?= $this->Number->format($resumo->NUMDIS) ?></td>
-                <td><?= h($resumo->CHAVE) ?></td>
-                <td><?= h($resumo->DataHora) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $resumo->CHAVE]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $resumo->CHAVE]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $resumo->CHAVE], ['confirm' => __('Are you sure you want to delete # {0}?', $resumo->CHAVE)]) ?>
-                </td>
-            </tr>
+            <?php foreach ($query->pracas as $pracas): ?>
+                <tr>
+                    <td>
+                        <?php
+                        echo $this->Form->create(null, [
+                            'url' => [
+                                'controller' => 'Resumos',
+                                'action' => 'view'
+                            ],
+                            'id' => $pracas->prefixo
+                        ]);
+                        echo $this->Form->hidden('prefixo', ['value' => $pracas->prefixo]); ?>
+                        <div class="input-group date margin">
+                            <span class="input-group-btn" data-toggle="tooltip" data-placement="top" title="Buscar">
+                                     <?php
+                                     echo $this->Form->submit($pracas->prefixo,['class' => 'btn btn-success btn-flat']);
+                                     echo $this->Form->end();
+                                     ?>
+                                </span>
+                        </div>
+                    </td>
+                    <td>
+                        <p style="margin-top: 20px"><?= $pracas->nome ?></p>
+                    </td>
+                </tr>
             <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+        </table>
     </div>
-</div>
+<?php endif; ?>

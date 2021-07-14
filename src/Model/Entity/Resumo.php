@@ -16,6 +16,7 @@ use Cake\ORM\Entity;
  * @property string|null $DEVOLVIDOS
  * @property string $CHAVE
  * @property string|null $DataHora
+ * @property int $ETAPA
  */
 class Resumo extends Entity
 {
@@ -38,5 +39,6 @@ class Resumo extends Entity
         'VENDIDOS' => true,
         'DEVOLVIDOS' => true,
         'DataHora' => true,
+        'ETAPA' => true,
     ];
 }

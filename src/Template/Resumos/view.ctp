@@ -1,45 +1,42 @@
-<?php
-
-use Cake\I18n\Number;
-
-$distribuidos = $totais->first()->qtd_distribuidos;
-$vendidos = $totais->first()->qtd_vendidos;
-$devolvidos = $totais->first()->qtd_devolvidos;
-$extravios = $distribuidos - $vendidos - $devolvidos;
-$progresso = ($extravios / $distribuidos) * 100;
-$status = 100 - $progresso;
-#$status = 26;
-$cor = "progress-bar-primary";
-switch ($status) {
-    case ($status < 25):
-        $cor = "progress-bar-red";
-        break;
-    case ($status >= 25 and $status < 50):
-        $cor = "progress-bar-yellow";
-        break;
-    case ($status >= 50 and $status < 90):
-        $cor = "progress-bar-aqua";
-        break;
-    case ($status >= 90):
-        $cor = "progress-bar-green";
-        break;
-}
-?>
+<!-- FORM BUSCAR ETAPA -->
 <div class="row">
-    <div class="col-lg-10">
-        <h3><?= $pracaInfors->prefixo ?> <i class="fa fa-hand-o-right"></i> <?= $pracaInfors->nome ?></h3>
-    </div>
-    <div class="col-lg-2">
-        <div class="pull-right">
-            <button class="btn btn-block btn-success hidden-print" onClick="window.location.reload();">Atualizar</button>
+    <div class="col-lg-offset-8 col-lg-4">
+        <div class=" pull-right">
+            <?php echo $this->Form->create($resumos, ['type' => 'post']); ?>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label">Buscar etapa</label>
+                <div class="col-sm-7">
+                    <div class="input-group input-group-sm">
+                        <select name="numero_etapa" class="form-control">
+                            <?php
+                            foreach ($etapas as $etapa => $praca) {
+                                ?>
+                                <option value="<?= $praca->ETAPA ?>"><?= $praca->ETAPA ?></option>
+                            <?php } ?>
+                        </select>
+                        <?php echo $this->Form->hidden('praca_prefixo', ['value' => $praca->PRACA]); ?>
+                        <span class="input-group-btn">
+                            <input type="submit" class="btn btn-success btn-flat" value="Buscar">
+                    </span>
+                    </div>
+                </div>
+            </div>
+            <?php echo $this->Form->end() ?>
         </div>
     </div>
 </div>
 <br>
+<?php
+$progressorGeral = $this->ViewService->progressoDistribuidor($totais->qtd_distribuidos, $totais->qtd_vendidos, $totais->qtd_devolvidos);
+$statusGeral = $this->ViewService->statusDistribuidor($progressorGeral);
+?>
+<!-- BARRA PROGRESSO GERAL-->
 <div class="progress progress active hidden-print">
-    <div class="progress-bar <?= $cor ?> progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0"
-         aria-valuemax="100" style="width: <?= $status ?>%">
-        <?= $this->Number->precision($status, 1); ?>% processados
+    <div class="progress progress">
+        <div class="progress-bar progress-bar-<?= $this->ViewService->progressColor($statusGeral) ?>"
+             style="width:<?= $statusGeral ?>%">
+            <?= $this->Number->precision($statusGeral, 1); ?>% processados
+        </div>
     </div>
 </div>
 <!-- Small boxes (Stat box) -->
@@ -49,7 +46,7 @@ switch ($status) {
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3><?= number_format($totais->first()->qtd_vendidos, 0, ',', '.'); ?></h3>
+                <h3><?= $this->Number->precision($totais->qtd_vendidos, 0); ?></h3>
                 <p>VENDIDOS</p>
             </div>
             <div class="icon">
@@ -62,7 +59,7 @@ switch ($status) {
         <!-- small box -->
         <div class="small-box bg-red">
             <div class="inner">
-                <h3><?= $totais->first()->qtd_distribuidos - $totais->first()->qtd_vendidos - $totais->first()->qtd_devolvidos; ?></h3>
+                <h3><?= $this->ViewService->calcExtravios($totais->qtd_distribuidos, $totais->qtd_vendidos, $totais->qtd_devolvidos) ?></h3>
                 <p>FALTAS</p>
             </div>
             <div class="icon">
@@ -75,7 +72,7 @@ switch ($status) {
         <!-- small box -->
         <div class="small-box bg-yellow">
             <div class="inner">
-                <h3><?= number_format($totais->first()->qtd_devolvidos, 0, ',', '.'); ?></h3>
+                <h3><?= $this->Number->precision($totais->qtd_devolvidos, 0); ?></h3>
                 <p>DEVOLUÇÕES</p>
             </div>
             <div class="icon">
@@ -88,7 +85,7 @@ switch ($status) {
         <!-- small box -->
         <div class="small-box bg-aqua">
             <div class="inner">
-                <h3><?= number_format($totais->first()->qtd_distribuidos, 0, ',', '.'); ?></h3>
+                <h3><?= number_format($totais->qtd_distribuidos, 0, ',', '.'); ?></h3>
                 <p>SAÍDAS</p>
             </div>
             <div class="icon">
@@ -99,9 +96,8 @@ switch ($status) {
     </div><!-- ./col -->
 </div>
 <!-- Small boxes (fim) -->
-<!-- TABELA RESUMO-->
 <div class="table-responsive">
-    <table class="table no-margin table-striped">
+    <table class="table no-margin table-striped table-condensed">
         <thead>
         <tr class="bg-gray-active">
             <th colspan="2">
@@ -116,11 +112,12 @@ switch ($status) {
         </tr>
         <tr>
             <td colspan="2">
-                <?= $pracaInfors->prefixo ?> <i class="fa fa-hand-o-right"></i> <?= $pracaInfors->nome ?>
+                <?= $inforPraca->prefixo ?> <i class="fa fa-hand-o-right"></i> <?= $inforPraca->nome ?>
             </td>
             <td><i class="fa fa-calendar-check-o"></i>
                 <?php
-                $data = new DateTime($resumos->first()->dataepa);
+
+                $data = new DateTime($dataEtapa);
                 echo $data->format('d-m-Y');
                 ?>
             </td>
@@ -137,77 +134,48 @@ switch ($status) {
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($etapaAtual as $etapa): ?>
+        <?php foreach ($resumos as $resumo): ?>
             <tr>
-                <td><?= $etapa->DISTRIBUIDOR ?></td>
-                <td><?= number_format($etapa->VENDIDOS, 0, ',', '.') ?></td>
-                <td><?= $etapa->DISTRIBUIDOS - $etapa->VENDIDOS - $etapa->DEVOLVIDOS ?></td>
-                <td><?= number_format($etapa->DEVOLVIDOS, 0, ',', '.') ?></td>
-                <td><?= number_format($etapa->DISTRIBUIDOS, 0, ',', '.') ?></td>
+                <td><?= $resumo->NOMEDIS ?></td>
+                <td><?= $this->Number->format($resumo->VENDIDOS); ?></td>
+                <td><?= $resumo->DISTRIBUIDOS - $resumo->VENDIDOS - $resumo->DEVOLVIDOS ?></td>
+                <td><?= $this->Number->format($resumo->DEVOLVIDOS) ?></td>
+                <td><?= $this->Number->format($resumo->DISTRIBUIDOS) ?></td>
                 <td width="200" class="hidden-xs">
-                    <?php
-                    # echo $this->Number->precision($statusDistribuidor, 0);
-                    $extraviosDistribuidor = ($etapa->DISTRIBUIDOS - $etapa->VENDIDOS - $etapa->DEVOLVIDOS);
-                    $progressoDistribuidor = ($extraviosDistribuidor / $etapa->DISTRIBUIDOS) * 100;
-                    $statusDistribuidor = 100 - $progressoDistribuidor;
-                    $result = $this->Number->precision($statusDistribuidor, 0);
-                    $cor = "red";
-                    switch ($result) {
-                        case ($result === 0):
-                            $cor = "red";
-                            break;
-                        case ($result < 25):
-                            $cor = "red";
-                            break;
-                        case ($result >= 25 and $result < 50):
-                            $cor = "yellow";
-                            break;
-                        case ($result >= 50 and $result < 90):
-                            $cor = "aqua";
-                            break;
-                        case ($result >= 90):
-                            $cor = "green";
-                            break;
-                    }
-                    ?>
-                    <div class="progress progress-xs progress-striped active">
-                        <div class="progress-bar progress-bar-<?= $cor ?>"
-                             style="width:<?= $result ?>%"></div>
+                    <?php $progressoDistribuidor = $this->ViewService->statusDistribuidor($this->ViewService->progressoDistribuidor($resumo->DISTRIBUIDOS, $resumo->VENDIDOS, $resumo->DEVOLVIDOS)); ?>
+                    <div class="progress progress-xs active">
+                        <div
+                            class="progress-bar progress-bar-<?= $this->ViewService->progressColor($progressoDistribuidor) ?>"
+                            style="width:<?= $progressoDistribuidor ?>%"></div>
                     </div>
                 </td>
                 <td class="hidden-xs">
-                    <?php
-                    $extraviosDistribuidor = ($etapa->DISTRIBUIDOS - $etapa->VENDIDOS - $etapa->DEVOLVIDOS);
-                    $progressoDistribuidor = ($extraviosDistribuidor / $etapa->DISTRIBUIDOS) * 100;
-                    $statusDistribuidorFinal = 100 - $progressoDistribuidor; ?>
-                    <span
-                        class="badge bg-<?=$cor ?>"><?php echo $this->Number->precision($statusDistribuidorFinal, 0); ?>%</span>
+                    <span class="badge bg-<?= $this->ViewService->progressColor($progressoDistribuidor) ?>">
+                        <?php echo $progressoDistribuidor; ?>%</span>
                 </td>
             </tr>
         <?php endforeach; ?>
-        </tbody>
         <tfoot>
         <tr class="bg-gray-active">
-            <th>TOTAL</th>
-            <th><?= $this->Number->precision($totais->first()->qtd_vendidos, 0) ?></th>
-            <th>
-                <?php
-                $totalExtravios = $totais->first()->qtd_distribuidos - $totais->first()->qtd_vendidos - $totais->first()->qtd_devolvidos;
-                echo $this->Number->precision($totalExtravios, 0);
-                ?>
-            </th>
-            <th><?= $this->Number->precision($totais->first()->qtd_devolvidos, 0) ?></th>
-            <th><?= $this->Number->precision($totais->first()->qtd_distribuidos, 0) ?></th>
-            <th colspan="2" class="hidden-xs"> <span
-                    class="badge bg-<?= $cor ?>"><?php
-                    $totalExtravios = $totais->first()->qtd_distribuidos - $totais->first()->qtd_vendidos - $totais->first()->qtd_devolvidos;
-                    $progressoDistribuidorTotal = ($totalExtravios / $totais->first()->qtd_distribuidos) * 100;
-                    $progressoTotal = 100 - $progressoDistribuidorTotal;
-                    echo $this->Number->precision($progressoTotal, 1);
-                    #echo $this->Number->precision($statusDistribuidor, 0); ?>%</span>
-            </th>
+            <td>TOTAL <?= $totais->PRACA ?></td>
+            <td><?= $totais->qtd_vendidos ?></td>
+            <td><?= $this->ViewService->calcExtravios($totais->qtd_distribuidos, $totais->qtd_vendidos, $totais->qtd_devolvidos) ?></td>
+            <td><?= $totais->qtd_devolvidos ?></td>
+            <td><?= $totais->qtd_distribuidos ?></td>
+            <td class="hidden-xs">
+                <div class="progress progress-xs active">
+                    <div
+                        class="progress-bar progress-bar-<?= $this->ViewService->progressColor($statusGeral) ?> progress-bar-striped"
+                        style="width: <?= $statusGeral ?>%">
+                        <span class="sr-only"></span>
+                    </div>
+                </div>
+            </td>
+            <td class="hidden-xs"><span class="badge bg-<?= $this->ViewService->progressColor($statusGeral) ?>">
+                        <?php echo $statusGeral; ?>%</span></td>
         </tr>
         </tfoot>
+        </tbody>
     </table>
 </div>
 <script>

@@ -1,3 +1,8 @@
+<?php
+foreach($resumos as $resumo){
+    debug($resumo);
+}
+?>
 <div class="resumos index large-9 medium-8 columns content">
     <h3><?= __('Praças') ?></h3>
     <div class="alert alert-info alert-dismissable">
@@ -24,12 +29,13 @@
                                 'id' => $pracas->prefixo
                             ]);
                             echo $this->Form->hidden('prefixo', ['value' => $pracas->prefixo]); ?>
-                            <div class="input-group date margin">
-                                <input type="text" class="form-control" name="ETAPA">
+                            <div class="input-group date margin" style="width: 125px;">
+                                <input type="text" style="font-size: 12px" class="form-control data-etapa" name="DATAETAPA" autocomplete="off"
+                                        required="required" placeholder="Selecione data">
                                 <span class="input-group-btn" data-toggle="tooltip" data-placement="top" title="Buscar">
                                      <?php
-                                     echo $this->Form->submit($pracas->prefixo,['class' => 'btn btn-success btn-flat']);
-                                     echo $this->Form->end();
+                                        echo $this->Form->submit($pracas->prefixo,['class' => 'btn btn-success btn-flat']);
+                                        echo $this->Form->end();
                                      ?>
                                 </span>
                             </div>

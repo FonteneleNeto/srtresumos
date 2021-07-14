@@ -15,85 +15,35 @@ class ResumosController extends AppController
     {
         parent::initialize();
         $this->loadModel('Pracas');
+        $this->loadModel('Users');
     }
 
 
     public function view()
     {
-        $dataEtapa = $this->request->getData('DATAETAPA');
-        $prefixo = $this->request->getData('prefixo');
-        /*if ($this->request->getData('DATAETAPA') == '') {
-            $dataEtapa = 'MAX(dataetapa)';
-        }*/
-        $verificaDataEtapa = $this->Resumos->find('all')
-            ->where(['Resumos.praca' => $prefixo])
-            ->where(['Resumos.DATAETAPA' => $dataEtapa]);
-        if ($this->request->is('post')) {
-            if ($verificaDataEtapa->first() == NULL) {
-                $this->Flash->error(__('Não foram encontrados registros para esta data'));
-                return $this->redirect(['controller' => 'Users', 'action' => 'index']);
-            }
+        if($this->request->is('post') and $this->request->getData('numero_etapa') != null){
+            $numero_etapa = $this->request->getData('numero_etapa');
+            $praca = $this->request->getData('praca_prefixo');
+        }else{
+            $praca = $this->request->getData('prefixo');
+            $numero_etapa = $this->Resumos->find('MaxEtapa', ['praca' => $praca]);
         }
 
-        #---------------------------------------------------------------
-        #Carrega dados da praça para visualiações
-        $pracaInfors = $this->Pracas->find()
-            ->select(['id', 'prefixo', 'nome'])
-            ->where(['prefixo' => $prefixo])->first();
-        $resumos = $this->Resumos->find()
-            #->select(['praca', 'dataepa' => 'MAX(dataetapa)'])
-            ->select(['praca', 'dataepa'    => $dataEtapa])
-            ->where(['Resumos.praca'        => $prefixo]);
-        $praca = $resumos->first()->praca;
-        $dataEtapa = $resumos->first()->dataepa;
-        if ($praca == null) {
-            throw new NotFoundException(__('Praça não encontrada'));
-        }
-        #---------------------------------------------------------------
-        #busca dos dados do resumo
-        $etapaAtual = $this->Resumos->find()
-            ->where(['Resumos.praca' => $praca])
-            ->where(['Resumos.DATAETAPA' => $dataEtapa]);
-        #---------------------------------------------------------------
+        $options = ['praca' => $praca, 'etapa' => $numero_etapa];
         #busca os totais distribuídos, vendidos e devolvidos
-        $totais = $this->Resumos->find();
-        $totais
-            ->select([
-                'qtd_distribuidor'  => $totais->func()->count('DISTRIBUIDOR'),
-                'qtd_distribuidos'  => $totais->func()->sum('DISTRIBUIDOS'),
-                'qtd_vendidos'      => $totais->func()->sum('VENDIDOS'),
-                'qtd_devolvidos'    => $totais->func()->sum('DEVOLVIDOS')
-            ])
-            ->where(['Resumos.praca'        => $praca])
-            ->where(['Resumos.DATAETAPA'    => $dataEtapa]);
-        $this->set(compact(['pracaInfors', 'resumos', 'etapaAtual', 'totais']));
-        $this->set('title', $pracaInfors->nome);
+        $totais = $this->Resumos->find('TotalsOfEtapa', $options);
+        $inforPraca = $this->Resumos->find('inforPraca',$options);
+        #busca as linhas da referida etapa e praça para montar tabela
+        $dataEtapa = $this->Resumos->find('SummaryCurrentEtapa', $options)->first()->DATAETAPA;
+        $resumos = $this->Resumos->find('SummaryCurrentEtapa', $options);
+        $etapas = $this->Resumos->find('EtapasOfPraca',$options);
+
+        $this->set(compact(['totais', 'resumos','inforPraca','dataEtapa','etapas']));
     }
-    public  function pdf()
+
+    public function index()
     {
-        $this->viewBuilder()->enableAutoLayout(false);
-        #busca os totais distribuídos, vendidos e devolvidos
-        $totais = $this->Resumos->find();
-        $totais
-            ->select([
-                'qtd_distribuidor'  => $totais->func()->count('DISTRIBUIDOR'),
-                'qtd_distribuidos'  => $totais->func()->sum('DISTRIBUIDOS'),
-                'qtd_vendidos'      => $totais->func()->sum('VENDIDOS'),
-                'qtd_devolvidos'    => $totais->func()->sum('DEVOLVIDOS')
-            ])
-            ->where(['Resumos.praca'        => 'NOR'])
-            ->where(['Resumos.DATAETAPA'    => '20210321']);
-        $etapaAtual = $this->Resumos->find()
-            ->where(['Resumos.praca'        => 'NOR'])
-            ->where(['Resumos.DATAETAPA'    => '20210321']);
-        $this->set(compact(['totais','etapaAtual']));
-        #--------------------------------------------------------------
-        $this->viewBuilder()->setClassName('CakePdf.pdf');
-        $this->viewBuilder()->setOptions([
-            'pdfConfig' => [
-                'orientation' => 'portrait',
-                'download' => true
-            ]
-        ]);
+        $query = $this->Resumos->find('ActiveUserAndPracas', ['id' => 1]);
+        $this->set(compact('query'));
     }
 }

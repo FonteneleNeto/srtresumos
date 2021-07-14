@@ -49,7 +49,7 @@ class AppController extends Controller
                 'action' => 'login'
             ],
             'loginRedirect' => [
-                'controller' => 'users',
+                'controller' => 'resumos',
                 'action' => 'index'
             ],
             'logoutRedirect' => [

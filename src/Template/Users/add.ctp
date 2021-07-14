@@ -19,10 +19,10 @@
     <fieldset>
         <legend><?= __('Add User') ?></legend>
         <?php
-            echo $this->Form->control('name');
-            echo $this->Form->control('username');
-            echo $this->Form->control('password');
-            echo $this->Form->control('email');
+            echo $this->Form->control('name',['placeholder' => 'Nome Completo']);
+            echo $this->Form->control('username',['placeholder' => 'Nome de usuário']);
+            echo $this->Form->control('password',['placeholder' => 'senha de acesso']);
+            echo $this->Form->control('email',['placeholder' => 'E-mail']);
             echo $this->Form->control('ativo');
             echo $this->Form->control('role',['options' => ['' => 'Escolha o tipo de usuário','Admin'=>'Administrador','Gestor' => 'Gestor de Praça'],'class' => 'form-control']);
             echo $this->Form->control('pracas._ids', ['options' => $pracas,'class' => 'form-control select2']);
